@@ -83,7 +83,7 @@ export class UploadService {
       // Use API_URL (e.g. https://domain.com/api)
       // We must keep the /api prefix so requests are routed to the backend by Nginx.
       // Nginx strips /api, so the backend receives /images/filename.webp, which matches ServeStaticModule.
-      const baseUrl = process.env.API_URL || 'https://alraay.com/api';
+      const baseUrl = process.env.API_URL || 'https://srv1318325.hstgr.cloud/api';
 
       // Ensure no double slashes
       const cleanBase = baseUrl.replace(/\/+$/, '');

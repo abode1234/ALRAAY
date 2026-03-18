@@ -39,7 +39,7 @@ export default function ImageUpload() {
     formData.append("type", uploadType);
 
     try {
-      const apiUrl = process.env.NEXT_PUBLIC_API_URL || "https://alraay.com/api";
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || "https://srv1318325.hstgr.cloud/api";
       // Remove /api suffix if it exists to avoid double /api/api
       // But wait, the backend controller is @Controller('upload'), so it should be at /upload
       // If NEXT_PUBLIC_API_URL includes /api, we should use it.

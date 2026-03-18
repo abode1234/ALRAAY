@@ -1,34 +1,34 @@
 module.exports = {
   apps: [
     {
-      name: "alatian-backend",
+      name: "alraay-backend",
       cwd: "./backend",
       script: "dist/main.js",
       instances: 2,
       exec_mode: "cluster",
       env: {
         NODE_ENV: "production",
-        PORT: 3002
+        PORT: 4002
       }
     },
     {
-      name: "alatian-frontend",
+      name: "alraay-frontend",
       cwd: "./front-end",
       script: "node_modules/next/dist/bin/next",
-      args: "start",
+      args: "start -p 4000",
       env: {
         NODE_ENV: "production",
-        PORT: 3000
+        PORT: 4000
       }
     },
     {
-      name: "alatian-admin",
+      name: "alraay-admin",
       cwd: "./admin-dashboard",
       script: "node_modules/next/dist/bin/next",
-      args: "start -p 3001",
+      args: "start -p 4001",
       env: {
         NODE_ENV: "production",
-        PORT: 3001
+        PORT: 4001
       }
     }
   ]

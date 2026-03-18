@@ -16,11 +16,11 @@ async function bootstrap() {
 
   app.enableCors({
     origin: [
-      process.env.FRONTEND_URL || 'http://localhost:3000',
-      'http://localhost:3001', // Admin dashboard
-      'http://localhost:3003',
-      'http://alraay.com',
-      'https://alraay.com',
+      process.env.FRONTEND_URL || 'http://localhost:4000',
+      'http://localhost:4001', // Admin dashboard
+      'http://localhost:4003', // other if any
+      'http://srv1318325.hstgr.cloud',
+      'https://srv1318325.hstgr.cloud',
       'http://145.223.100.194',
       'https://145.223.100.194',
     ],
@@ -51,7 +51,7 @@ async function bootstrap() {
   });
   SwaggerModule.setup('api/chatbot-docs', app, chatbotDocument);
 
-  const port = process.env.PORT || 3001;
+  const port = process.env.PORT || 4002;
   await app.listen(port);
 
   console.log(`🚀 Server running on http://localhost:${port}`);
