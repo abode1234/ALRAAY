@@ -107,7 +107,7 @@ export default function CategoryPage() {
               <div
                 key={product.id}
                 onClick={() => openQuickView(product as unknown as APIProduct)}
-                className="bg-card border border-border rounded-xl overflow-hidden hover:shadow-lg transition-all group cursor-pointer h-full flex flex-col"
+                className="bg-card border border-border rounded-md overflow-hidden hover:shadow-sm transition-all group cursor-pointer h-full flex flex-col"
               >
                 <div className="aspect-square bg-muted relative">
                   <img

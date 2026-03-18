@@ -66,7 +66,7 @@ export default function BrandsPage() {
               <Link
                 key={brand.id}
                 href={`/products?brand=${brand.name}`}
-                className="bg-card border border-border rounded-xl p-6 flex flex-col items-center justify-center hover:shadow-lg transition-all group"
+                className="bg-card border border-border rounded-md p-6 flex flex-col items-center justify-center hover:shadow-sm transition-all group"
               >
                 <div className="w-full aspect-[3/2] bg-muted rounded-lg flex items-center justify-center mb-4 overflow-hidden">
                   {brand.logo ? (

@@ -44,7 +44,7 @@ export function ProductCard({ product, onAddToCart, onQuickView }: ProductCardPr
   }
 
   return (
-    <div className="group relative bg-card rounded-2xl overflow-hidden border border-border hover:border-primary transition-all duration-300 hover:shadow-2xl hover:shadow-primary/20 h-full flex flex-col">
+    <div className="group relative bg-card rounded-md overflow-hidden border border-border hover:border-primary transition-all duration-300 hover:shadow-md hover:shadow-primary/20 h-full flex flex-col">
       <div onClick={handleCardClick} className={`${onQuickView ? 'cursor-pointer' : ''} flex-1 flex flex-col`}>
         {onQuickView ? (
           <div className="flex flex-col flex-1">
@@ -167,7 +167,7 @@ export function ProductCard({ product, onAddToCart, onQuickView }: ProductCardPr
             e.preventDefault()
             onAddToCart?.(product.id)
           }}
-          className="w-full bg-primary hover:bg-primary-dark text-white font-bold py-2 rounded-xl transition-all shadow-lg shadow-primary/20 hover:shadow-primary/40"
+          className="w-full bg-primary hover:bg-primary-dark text-white font-bold py-2 rounded-md transition-all shadow-lg shadow-primary/20 hover:shadow-primary/40"
           disabled={product.inStock === false}
         >
           <ShoppingCart className="h-5 w-5 ml-2" />

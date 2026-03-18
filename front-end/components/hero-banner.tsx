@@ -9,7 +9,7 @@ interface HeroBannerProps {
 
 export function HeroBanner({ title, subtitle, gradient, imageQuery = 'gaming pc components' }: HeroBannerProps) {
   return (
-    <div className={`relative h-[400px] rounded-2xl overflow-hidden ${gradient} shadow-lg`}>
+    <div className={`relative h-[400px] rounded-md overflow-hidden ${gradient} shadow-lg`}>
       <div className="grid grid-cols-1 md:grid-cols-2 h-full">
         {/* Text Content - Right Side */}
         <div className="flex items-center justify-center p-8 md:p-12 order-2 md:order-1">

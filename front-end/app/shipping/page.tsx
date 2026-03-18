@@ -11,7 +11,7 @@ export default function ShippingPolicyPage() {
 
         <div className="space-y-8">
           {/* مناطق التوصيل */}
-          <div className="bg-card border border-border rounded-xl p-6">
+          <div className="bg-card border border-border rounded-md p-6">
             <div className="flex items-center gap-3 mb-4">
               <MapPin className="h-6 w-6 text-primary" />
               <h2 className="text-2xl font-bold">١. مناطق التوصيل</h2>
@@ -29,7 +29,7 @@ export default function ShippingPolicyPage() {
           </div>
 
           {/* أوقات التوصيل */}
-          <div className="bg-card border border-border rounded-xl p-6">
+          <div className="bg-card border border-border rounded-md p-6">
             <div className="flex items-center gap-3 mb-4">
               <Clock className="h-6 w-6 text-primary" />
               <h2 className="text-2xl font-bold">٢. أوقات التوصيل</h2>
@@ -47,7 +47,7 @@ export default function ShippingPolicyPage() {
           </div>
 
           {/* رسوم التوصيل */}
-          <div className="bg-card border border-border rounded-xl p-6">
+          <div className="bg-card border border-border rounded-md p-6">
             <div className="flex items-center gap-3 mb-4">
               <Truck className="h-6 w-6 text-primary" />
               <h2 className="text-2xl font-bold">٣. رسوم التوصيل</h2>
@@ -65,7 +65,7 @@ export default function ShippingPolicyPage() {
           </div>
 
           {/* حالة المنتج عند التوصيل */}
-          <div className="bg-card border border-border rounded-xl p-6">
+          <div className="bg-card border border-border rounded-md p-6">
             <div className="flex items-center gap-3 mb-4">
               <Package className="h-6 w-6 text-primary" />
               <h2 className="text-2xl font-bold">٤. حالة المنتج عند التوصيل</h2>
@@ -83,7 +83,7 @@ export default function ShippingPolicyPage() {
           </div>
 
           {/* تتبع الطلبات */}
-          <div className="bg-card border border-border rounded-xl p-6">
+          <div className="bg-card border border-border rounded-md p-6">
             <div className="flex items-center gap-3 mb-4">
               <Search className="h-6 w-6 text-primary" />
               <h2 className="text-2xl font-bold">٥. تتبع الطلبات</h2>
@@ -101,7 +101,7 @@ export default function ShippingPolicyPage() {
           </div>
 
           {/* الاتصال بنا */}
-          <div className="bg-card border border-border rounded-xl p-6">
+          <div className="bg-card border border-border rounded-md p-6">
             <div className="flex items-center gap-3 mb-4">
               <Mail className="h-6 w-6 text-primary" />
               <h2 className="text-2xl font-bold">٦. الاتصال بنا</h2>

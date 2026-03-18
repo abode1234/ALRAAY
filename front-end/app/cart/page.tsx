@@ -304,7 +304,7 @@ export default function CartPage() {
               {cartItems.map((item) => (
                 <div
                   key={item.id}
-                  className="bg-card border border-border rounded-xl p-4 flex items-center gap-4"
+                  className="bg-card border border-border rounded-md p-4 flex items-center gap-4"
                 >
                   {item.product.images?.length > 0 && item.product.images[0] && (
                     <div className="w-24 h-24 bg-muted rounded-lg overflow-hidden flex-shrink-0">
@@ -348,7 +348,7 @@ export default function CartPage() {
               ))}
             </div>
             <div>
-              <div className="bg-card border border-border rounded-xl p-6 sticky top-4">
+              <div className="bg-card border border-border rounded-md p-6 sticky top-4">
                 <h2 className="text-xl font-bold mb-4">ملخص الطلب</h2>
                 <div className="space-y-3 mb-6">
                   <div className="flex justify-between">
@@ -440,7 +440,7 @@ export default function CartPage() {
         {/* Checkout Modal */}
         {showCheckoutModal && (
           <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-            <div className="bg-card border border-border rounded-2xl p-6 max-w-md w-full shadow-2xl">
+            <div className="bg-card border border-border rounded-md p-6 max-w-md w-full shadow-md">
               {checkoutStep === 1 && (
                 <>
                   <div className="flex items-center justify-between mb-6">
@@ -579,7 +579,7 @@ export default function CartPage() {
                     <button
                       onClick={handleOnlinePayment}
                       disabled={initiatingPayment}
-                      className="w-full bg-card border-2 border-primary rounded-xl p-4 text-right hover:bg-primary/5 transition-colors disabled:opacity-50"
+                      className="w-full bg-card border-2 border-primary rounded-md p-4 text-right hover:bg-primary/5 transition-colors disabled:opacity-50"
                     >
                       <div className="flex items-center gap-3">
                         {initiatingPayment ? (
@@ -598,7 +598,7 @@ export default function CartPage() {
                     <button
                       onClick={handleCashOnDelivery}
                       disabled={initiatingPayment || checkingOut}
-                      className="w-full bg-card border border-border rounded-xl p-4 text-right hover:bg-accent/50 transition-colors disabled:opacity-50"
+                      className="w-full bg-card border border-border rounded-md p-4 text-right hover:bg-accent/50 transition-colors disabled:opacity-50"
                     >
                       <div className="flex items-center gap-3">
                         {checkingOut ? (

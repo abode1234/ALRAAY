@@ -43,7 +43,7 @@ export function PriceFilterButton({ prices, value, label, placeholder, onSelect 
             </button>
 
             {open && (
-                <div className="absolute top-full mt-2 right-0 bg-popover border border-border rounded-xl shadow-2xl z-50 w-56 overflow-hidden">
+                <div className="absolute top-full mt-2 right-0 bg-popover border border-border rounded-md shadow-md z-50 w-56 overflow-hidden">
                     <div className="p-2 border-b border-border">
                         <button
                             onClick={() => { onSelect(''); setOpen(false); }}

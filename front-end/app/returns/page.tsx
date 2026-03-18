@@ -11,7 +11,7 @@ export default function ReturnsPolicyPage() {
 
         <div className="space-y-8">
           {/* شروط الاسترجاع */}
-          <div className="bg-card border border-border rounded-xl p-6">
+          <div className="bg-card border border-border rounded-md p-6">
             <div className="flex items-center gap-3 mb-4">
               <RotateCcw className="h-6 w-6 text-primary" />
               <h2 className="text-2xl font-bold">١. شروط الاسترجاع</h2>
@@ -33,7 +33,7 @@ export default function ReturnsPolicyPage() {
           </div>
 
           {/* المنتجات غير القابلة للاسترجاع */}
-          <div className="bg-card border border-border rounded-xl p-6">
+          <div className="bg-card border border-border rounded-md p-6">
             <div className="flex items-center gap-3 mb-4">
               <XCircle className="h-6 w-6 text-primary" />
               <h2 className="text-2xl font-bold">٢. المنتجات غير القابلة للاسترجاع</h2>
@@ -55,7 +55,7 @@ export default function ReturnsPolicyPage() {
           </div>
 
           {/* عملية الاسترجاع */}
-          <div className="bg-card border border-border rounded-xl p-6">
+          <div className="bg-card border border-border rounded-md p-6">
             <div className="flex items-center gap-3 mb-4">
               <ClipboardList className="h-6 w-6 text-primary" />
               <h2 className="text-2xl font-bold">٣. عملية الاسترجاع</h2>
@@ -77,7 +77,7 @@ export default function ReturnsPolicyPage() {
           </div>
 
           {/* استرداد الأموال */}
-          <div className="bg-card border border-border rounded-xl p-6">
+          <div className="bg-card border border-border rounded-md p-6">
             <div className="flex items-center gap-3 mb-4">
               <Banknote className="h-6 w-6 text-primary" />
               <h2 className="text-2xl font-bold">٤. استرداد الأموال</h2>
@@ -95,7 +95,7 @@ export default function ReturnsPolicyPage() {
           </div>
 
           {/* الاتصال بنا */}
-          <div className="bg-card border border-border rounded-xl p-6">
+          <div className="bg-card border border-border rounded-md p-6">
             <div className="flex items-center gap-3 mb-4">
               <Mail className="h-6 w-6 text-primary" />
               <h2 className="text-2xl font-bold">٥. الاتصال بنا</h2>

@@ -801,7 +801,7 @@ export default function BuildPCPage() {
               </div>
 
               {/* Promotional Image below the summary */}
-              <div className="hidden lg:block rounded-xl overflow-hidden border border-border relative group shadow-lg">
+              <div className="hidden lg:block rounded-md overflow-hidden border border-border relative group shadow-sm">
                 <img 
                   src="/gaming-pc-setup-rgb.jpg" 
                   alt="Gaming PC Setup" 

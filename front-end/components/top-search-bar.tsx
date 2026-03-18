@@ -10,7 +10,7 @@ export function TopSearchBar() {
           <Input
             type="search"
             placeholder="ابحث عن منتج"
-            className="h-14 pr-12 pl-6 rounded-xl border-0 shadow-sm text-base bg-white focus-visible:ring-2 focus-visible:ring-teal-300"
+            className="h-14 pr-12 pl-6 rounded-md border-0 shadow-sm text-base bg-white focus-visible:ring-2 focus-visible:ring-teal-300"
           />
         </div>
       </div>

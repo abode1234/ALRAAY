@@ -411,7 +411,7 @@ export default function BundleDetailsPage() {
               <div className="bg-secondary h-6 rounded w-full" />
               <div className="space-y-4">
                 {[...Array(4)].map((_, i) => (
-                  <div key={i} className="bg-card h-20 rounded-2xl" />
+                  <div key={i} className="bg-card h-20 rounded-md" />
                 ))}
               </div>
             </div>
@@ -472,7 +472,7 @@ export default function BundleDetailsPage() {
             </div>
 
             {hasCustomizations && (
-              <div className="flex items-center justify-between bg-primary/10 border border-primary/30 rounded-xl p-4">
+              <div className="flex items-center justify-between bg-primary/10 border border-primary/30 rounded-md p-4">
                 <span className="text-primary text-sm">لقد قمت بتخصيص هذه التجميعة. التغييرات ستُحفظ عند الإضافة للسلة.</span>
                 <button
                   onClick={resetCustomizations}
@@ -500,7 +500,7 @@ export default function BundleDetailsPage() {
                   <div key={category.key}>
                     {isEditing ? (
                       /* ===== EDITING STATE ===== */
-                      <div className="p-5 bg-card border border-[#06c6a1]/30 rounded-2xl space-y-4">
+                      <div className="p-5 bg-card border border-[#06c6a1]/30 rounded-md space-y-4">
                         <div className="flex items-center justify-between">
                           <h4 className="font-bold" style={{ color: '#06c6a1' }}>{category.name}</h4>
                           <button
@@ -520,13 +520,13 @@ export default function BundleDetailsPage() {
                               placeholder="ابحث عن قطعة..."
                               value={searchQuery}
                               onChange={(e) => setSearchQuery(e.target.value)}
-                              className="w-full pr-10 pl-4 py-2.5 bg-secondary border border-border rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#06c6a1] focus:border-transparent"
+                              className="w-full pr-10 pl-4 py-2.5 bg-secondary border border-border rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-[#06c6a1] focus:border-transparent"
                             />
                           </div>
                           <select
                             value={selectedBrand}
                             onChange={(e) => setSelectedBrand(e.target.value)}
-                            className="px-4 py-2.5 bg-secondary border border-border rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#06c6a1]"
+                            className="px-4 py-2.5 bg-secondary border border-border rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-[#06c6a1]"
                           >
                             <option value="">جميع البراندات</option>
                             {getBrands().map(brand => (
@@ -545,7 +545,7 @@ export default function BundleDetailsPage() {
                             {getFilteredProducts().map(product => (
                               <div
                                 key={product.id}
-                                className="flex items-center gap-3 p-3 bg-secondary hover:bg-[#06c6a1]/10 rounded-xl transition-colors cursor-pointer"
+                                className="flex items-center gap-3 p-3 bg-secondary hover:bg-[#06c6a1]/10 rounded-md transition-colors cursor-pointer"
                                 onClick={() => selectComponent(product)}
                               >
                                 {product.images && product.images[0] && (
@@ -590,7 +590,7 @@ export default function BundleDetailsPage() {
                         {categoryItems.map((product, index) => (
                           <div
                             key={`${product.id}-${index}`}
-                            className="p-4 bg-card border border-border rounded-2xl flex items-center justify-between hover:border-[#06c6a1]/30 transition-colors"
+                            className="p-4 bg-card border border-border rounded-md flex items-center justify-between hover:border-[#06c6a1]/30 transition-colors"
                           >
                             <div className="flex items-center gap-4 flex-1 min-w-0">
                               <div className="w-14 h-14 bg-secondary rounded-lg flex items-center justify-center p-2 flex-shrink-0 border border-border">
@@ -640,7 +640,7 @@ export default function BundleDetailsPage() {
                         {isMultiple && (
                           <button
                             onClick={() => startEditing(category.key)}
-                            className="w-full py-3 border border-dashed border-border hover:border-[#06c6a1] rounded-xl transition-colors text-muted-foreground hover:text-[#06c6a1] text-sm"
+                            className="w-full py-3 border border-dashed border-border hover:border-[#06c6a1] rounded-md transition-colors text-muted-foreground hover:text-[#06c6a1] text-sm"
                           >
                             + إضافة {category.name} آخر
                           </button>
@@ -650,7 +650,7 @@ export default function BundleDetailsPage() {
                       /* ===== EMPTY STATE ===== */
                       <button
                         onClick={() => startEditing(category.key)}
-                        className="w-full p-4 bg-card border border-dashed border-border hover:border-[#06c6a1] rounded-2xl transition-colors text-muted-foreground hover:text-[#06c6a1] flex items-center justify-center gap-2"
+                        className="w-full p-4 bg-card border border-dashed border-border hover:border-[#06c6a1] rounded-md transition-colors text-muted-foreground hover:text-[#06c6a1] flex items-center justify-center gap-2"
                       >
                         <category.icon className="h-5 w-5" />
                         + إضافة {category.name}
@@ -688,7 +688,7 @@ export default function BundleDetailsPage() {
 
               {/* Wattage Display */}
               {(calculateTotalPower() > 0 || getPSUCapacity() > 0) && (
-                <div className="p-4 bg-secondary rounded-2xl space-y-2">
+                <div className="p-4 bg-secondary rounded-md space-y-2">
                   <div className="flex items-center justify-between text-sm">
                     <div className="flex items-center gap-2">
                       <Zap className="w-4 h-4" style={{ color: '#06c6a1' }} />
@@ -741,7 +741,7 @@ export default function BundleDetailsPage() {
               <button
                 onClick={addToCart}
                 disabled={addingToCart}
-                className="w-full py-4 text-white font-bold text-xl rounded-2xl hover:opacity-90 hover:scale-[1.02] transition-all flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+                className="w-full py-4 text-white font-bold text-xl rounded-md hover:opacity-90 hover:scale-[1.02] transition-all flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
                 style={{ backgroundColor: '#06c6a1' }}
               >
                 {addingToCart ? (
@@ -759,7 +759,7 @@ export default function BundleDetailsPage() {
 
               <button
                 onClick={() => router.push('/build-pc')}
-                className="w-full py-3 border border-border text-muted-foreground rounded-2xl transition-all text-sm hover:opacity-80"
+                className="w-full py-3 border border-border text-muted-foreground rounded-md transition-all text-sm hover:opacity-80"
                 style={{ borderColor: 'rgba(6, 198, 161, 0.3)' }}
               >
                 ابدأ تجميعة جديدة

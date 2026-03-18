@@ -48,7 +48,7 @@ export default function BundlesPage() {
         {loading ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[...Array(6)].map((_, i) => (
-              <div key={i} className="bg-card border border-border rounded-2xl p-0 animate-pulse">
+              <div key={i} className="bg-card border border-border rounded-md p-0 animate-pulse">
                 <div className="aspect-[4/3] bg-secondary rounded-t-2xl" />
                 <div className="p-6 space-y-4">
                   <div className="bg-secondary h-6 rounded w-2/3" />
@@ -57,7 +57,7 @@ export default function BundlesPage() {
                       <div key={j} className="bg-secondary h-12 rounded-lg" />
                     ))}
                   </div>
-                  <div className="bg-secondary h-10 rounded-xl" />
+                  <div className="bg-secondary h-10 rounded-md" />
                 </div>
               </div>
             ))}
@@ -79,7 +79,7 @@ export default function BundlesPage() {
               return (
                 <div
                   key={bundle.id}
-                  className="bg-card border border-border rounded-2xl overflow-hidden transition-all duration-300 group flex flex-col hover:border-[#06c6a1]/40"
+                  className="bg-card border border-border rounded-md overflow-hidden transition-all duration-300 group flex flex-col hover:border-[#06c6a1]/40"
                 >
                   {/* Bundle Image */}
                   <div className="relative aspect-square bg-background overflow-hidden p-4 border-b border-border">
@@ -173,7 +173,7 @@ export default function BundlesPage() {
                     {/* CTA Button */}
                     <Link
                       href={`/bundles/${bundle.id}`}
-                      className="block w-full text-center py-3 border-2 font-bold rounded-xl hover:text-white transition-all duration-300"
+                      className="block w-full text-center py-3 border-2 font-bold rounded-md hover:text-white transition-all duration-300"
                       style={{ borderColor: '#06c6a1', color: '#06c6a1' }}
                       onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = '#06c6a1'; e.currentTarget.style.color = '#fff'; }}
                       onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.color = '#06c6a1'; }}
@@ -188,7 +188,7 @@ export default function BundlesPage() {
         )}
 
         {/* Build Your Own */}
-        <div className="mt-16 relative overflow-hidden rounded-2xl p-8 md:p-12 text-center"
+        <div className="mt-16 relative overflow-hidden rounded-md p-8 md:p-12 text-center"
           style={{
             background: 'linear-gradient(135deg, rgba(6, 198, 161, 0.15) 0%, rgba(6, 198, 161, 0.05) 50%, rgba(11, 63, 50, 0.08) 100%)',
             border: '1px solid rgba(6, 198, 161, 0.2)',
@@ -201,7 +201,7 @@ export default function BundlesPage() {
           </p>
           <Link
             href="/build-pc"
-            className="inline-flex items-center gap-2 text-white px-10 py-4 rounded-xl font-bold text-lg hover:opacity-90 hover:scale-[1.02] transition-all duration-300"
+            className="inline-flex items-center gap-2 text-white px-10 py-4 rounded-md font-bold text-lg hover:opacity-90 hover:scale-[1.02] transition-all duration-300"
             style={{ backgroundColor: '#06c6a1' }}
           >
             <span>ابدأ البناء</span>

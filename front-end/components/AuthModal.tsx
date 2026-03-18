@@ -58,7 +58,7 @@ export default function AuthModal({ isOpen, onClose, onSuccess }: AuthModalProps
 
     return (
         <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-            <div className="bg-card border border-border rounded-2xl p-6 max-w-md w-full shadow-2xl animate-in fade-in zoom-in duration-200">
+            <div className="bg-card border border-border rounded-md p-6 max-w-md w-full shadow-md animate-in fade-in zoom-in duration-200">
                 <div className="flex items-center justify-between mb-6">
                     <h3 className="text-xl font-bold">
                         {activeTab === 'login' ? 'تسجيل الدخول' : 'إنشاء حساب جديد'}

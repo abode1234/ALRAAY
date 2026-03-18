@@ -121,7 +121,7 @@ export default function ProductDetailsPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12">
           {/* Product Images */}
           <div className="space-y-4">
-            <div className="relative aspect-square bg-card rounded-xl overflow-hidden border border-border">
+            <div className="relative aspect-square bg-card rounded-md overflow-hidden border border-border">
               <Image
                 src={product.images[selectedImage] || '/placeholder.png'}
                 alt={product.name}
@@ -217,7 +217,7 @@ export default function ProductDetailsPage() {
             )}
 
             {/* Description */}
-            <div className="p-6 bg-card rounded-xl border border-border">
+            <div className="p-6 bg-card rounded-md border border-border">
               <h3 className="font-bold text-lg mb-3">الوصف</h3>
               <p className="text-muted-foreground leading-relaxed">{product.description}</p>
             </div>
@@ -287,7 +287,7 @@ export default function ProductDetailsPage() {
         </div>
 
         {/* Specifications */}
-        <div className="bg-card rounded-xl border border-border p-8">
+        <div className="bg-card rounded-md border border-border p-8">
           <h2 className="text-2xl font-bold mb-6">المواصفات التقنية</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {Object.entries(product.specifications).map(([key, value]) => (

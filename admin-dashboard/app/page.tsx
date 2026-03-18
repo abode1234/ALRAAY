@@ -167,7 +167,7 @@ export default function DashboardPage() {
                 <Link
                   key={card.title}
                   href={card.href}
-                  className={`bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow ${card.highlight && card.value > 0 ? 'ring-2 ring-emerald-500 ring-offset-2' : ''
+                  className={`bg-white rounded-md p-6 border border-gray-200 hover:border-gray-300 transition-colors ${card.highlight && card.value > 0 ? 'ring-1 ring-emerald-500' : ''
                     }`}
                 >
                   <div className="flex items-center justify-between">
@@ -175,7 +175,7 @@ export default function DashboardPage() {
                       <p className="text-gray-500 text-sm mb-1">{card.title}</p>
                       <p className="text-3xl font-bold text-gray-800">{card.value}</p>
                     </div>
-                    <div className={`w-12 h-12 ${card.color} rounded-lg flex items-center justify-center`}>
+                    <div className={`w-12 h-12 ${card.color} rounded-md flex items-center justify-center`}>
                       <Icon className="h-6 w-6 text-white" />
                     </div>
                   </div>
@@ -190,7 +190,7 @@ export default function DashboardPage() {
           </div>
 
           {/* Recent Orders */}
-          <div className="bg-white rounded-xl shadow-sm">
+          <div className="bg-white rounded-md border border-gray-200">
             <div className="p-6 border-b border-gray-200 flex justify-between items-center">
               <h2 className="text-xl font-bold text-gray-800">آخر الطلبات</h2>
               <Link

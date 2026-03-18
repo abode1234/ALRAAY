@@ -47,7 +47,7 @@ export function HeroSection({ banners = defaultBanners }: HeroSectionProps) {
             <Link
               key={banner.id}
               href={banner.link}
-              className="relative group block rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 h-[300px] md:h-[400px]"
+              className="relative group block rounded-md overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 h-[300px] md:h-[400px]"
             >
               <div className="relative w-full h-full bg-card">
                 <Image

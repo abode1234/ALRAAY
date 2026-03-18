@@ -225,7 +225,7 @@ export default function ProductPage() {
           {loadingSimilar ? (
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {[...Array(4)].map((_, i) => (
-                <div key={i} className="bg-card rounded-xl p-4 animate-pulse border border-border">
+                <div key={i} className="bg-card rounded-md p-4 animate-pulse border border-border">
                   <div className="aspect-square bg-secondary rounded-lg mb-3"></div>
                   <div className="bg-secondary h-4 rounded mb-2"></div>
                   <div className="bg-secondary h-4 rounded w-2/3"></div>
@@ -238,7 +238,7 @@ export default function ProductPage() {
                 <Link
                   key={similarProduct.id}
                   href={`/product/${similarProduct.id}`}
-                  className="bg-card rounded-xl overflow-hidden hover:shadow-lg transition-all group border border-border"
+                  className="bg-card rounded-md overflow-hidden hover:shadow-sm transition-all group border border-border"
                 >
                   <div className="aspect-square bg-card relative">
                     {similarProduct.images && similarProduct.images[0] && (

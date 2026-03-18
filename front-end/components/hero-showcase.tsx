@@ -11,26 +11,25 @@ interface BannerProps {
 
 function Banner({ image, label, title, subtitle, className = '', highlightTitle = false }: BannerProps) {
   return (
-    <div className={`relative rounded-2xl overflow-hidden shadow-xl group hover:shadow-2xl transition-shadow duration-300 ${className}`}>
+    <div className={`relative rounded-md overflow-hidden shadow-sm group transition-shadow duration-300 ${className}`}>
       {/* Background Image */}
       <div className="relative w-full h-full bg-card">
         <Image
           src={image}
           alt={title}
           fill
-          className="object-cover group-hover:scale-105 transition-transform duration-500"
+          className="object-cover transition-transform duration-500"
           priority
         />
-        {/* Dark Overlay with Orange Glow Effect */}
-        <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/60 to-black/70" />
-        <div className="absolute inset-0 bg-gradient-to-l from-teal-600/10 via-transparent to-transparent" />
+        {/* Dark Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black/70" />
         
         {/* Content */}
         <div className="relative h-full flex flex-col justify-between p-6 md:p-8 lg:p-10 text-right">
           {/* Top Label/Brand */}
           {label && (
             <div className="mb-auto flex items-start justify-end">
-              <span className="inline-block text-xs md:text-sm font-bold text-teal-400 bg-teal-600/20 px-3 md:px-4 py-1.5 md:py-2 rounded-lg backdrop-blur-sm border border-teal-600/30">
+              <span className="inline-block text-xs md:text-sm font-bold text-teal-400 bg-teal-600/20 px-3 md:px-4 py-1.5 md:py-2 rounded-md backdrop-blur-sm border border-teal-600/30">
                 {label}
               </span>
             </div>
@@ -65,17 +64,16 @@ export function HeroShowcase() {
           {/* Left Side: Two Stacked Banners */}
           <div className="lg:col-span-1 space-y-4 md:space-y-6 order-2 lg:order-1">
             {/* Top Small Banner - Professional Builds */}
-            <div className="relative rounded-2xl overflow-hidden shadow-xl group hover:shadow-2xl transition-shadow duration-300 h-[250px] md:h-[300px]">
+            <div className="relative rounded-md overflow-hidden shadow-sm group transition-shadow duration-300 h-[250px] md:h-[300px]">
               <div className="relative w-full h-full">
                 <Image
                   src="/gaming-pc-setup-rgb.jpg"
                   alt="التجميعات الاحترافية"
                   fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  className="object-cover transition-transform duration-500"
                   priority
                 />
-                <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/60 to-black/70" />
-                <div className="absolute inset-0 bg-gradient-to-l from-orange-500/10 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black/70" />
                 
                 <div className="relative h-full flex flex-col justify-between p-6 md:p-8 text-right">
                   {/* Top - Brand */}
@@ -99,17 +97,16 @@ export function HeroShowcase() {
             </div>
             
             {/* Bottom Small Banner - Graphics Cards */}
-            <div className="relative rounded-2xl overflow-hidden shadow-xl group hover:shadow-2xl transition-shadow duration-300 h-[250px] md:h-[300px]">
+            <div className="relative rounded-md overflow-hidden shadow-sm group transition-shadow duration-300 h-[250px] md:h-[300px]">
               <div className="relative w-full h-full">
                 <Image
                   src="/rtx-4090-graphics-card.jpg"
                   alt="أي كرت شاشة"
                   fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  className="object-cover transition-transform duration-500"
                   priority
                 />
-                <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/60 to-black/70" />
-                <div className="absolute inset-0 bg-gradient-to-l from-orange-500/10 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black/70" />
                 
                 <div className="relative h-full flex flex-col justify-between p-6 md:p-8 text-right">
                   {/* Top - Brand */}
@@ -140,25 +137,24 @@ export function HeroShowcase() {
           
           {/* Right Side: Main Large Banner - Installments */}
           <div className="lg:col-span-2 order-1 lg:order-2">
-            <div className="relative rounded-2xl overflow-hidden shadow-xl group hover:shadow-2xl transition-shadow duration-300 h-[400px] md:h-[600px] lg:h-[650px]">
+            <div className="relative rounded-md overflow-hidden shadow-sm group transition-shadow duration-300 h-[400px] md:h-[600px] lg:h-[650px]">
               <div className="relative w-full h-full bg-card">
                 <Image
                   src="/gaming-pc-setup-rgb.jpg"
                   alt="تجميعات احترافية"
                   fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  className="object-cover transition-transform duration-500"
                   priority
                 />
-                <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/60 to-black/70" />
-                <div className="absolute inset-0 bg-gradient-to-l from-orange-500/10 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black/70" />
                 
                 <div className="relative h-full flex flex-col justify-between p-6 md:p-8 lg:p-10 text-right">
                   {/* Top - Payment Tags */}
                   <div className="mb-auto flex items-start justify-end gap-3 pt-4">
-                    <div className="bg-teal-500 text-white px-4 py-2 rounded-lg font-bold text-sm md:text-base shadow-lg">
+                    <div className="bg-teal-500 text-white px-4 py-2 rounded-md font-bold text-sm md:text-base">
                       tabby
                     </div>
-                    <div className="bg-gradient-to-r from-amber-500 to-orange-500 text-white px-4 py-2 rounded-lg font-bold text-sm md:text-base shadow-lg">
+                    <div className="bg-gradient-to-r from-amber-500 to-orange-500 text-white px-4 py-2 rounded-md font-bold text-sm md:text-base">
                       تمارا
                     </div>
                   </div>

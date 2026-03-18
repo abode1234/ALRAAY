@@ -24,7 +24,7 @@ export function CategoryStrip() {
   return (
     <div className="bg-secondary py-6 border-b border-border">
       <div className="container mx-auto px-4">
-        <div className="bg-card rounded-xl shadow-lg p-6 overflow-x-auto border border-border">
+        <div className="bg-card rounded-md shadow-lg p-6 overflow-x-auto border border-border">
           <div className="flex gap-8 justify-start">
             {categories.map((category) => (
               <Link

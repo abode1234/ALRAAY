@@ -11,7 +11,7 @@ export default function PrivacyPolicyPage() {
 
         <div className="space-y-8">
           {/* جمع المعلومات */}
-          <div className="bg-card border border-border rounded-xl p-6">
+          <div className="bg-card border border-border rounded-md p-6">
             <div className="flex items-center gap-3 mb-4">
               <Database className="h-6 w-6 text-primary" />
               <h2 className="text-2xl font-bold">١. جمع المعلومات</h2>
@@ -33,7 +33,7 @@ export default function PrivacyPolicyPage() {
           </div>
 
           {/* استخدام المعلومات */}
-          <div className="bg-card border border-border rounded-xl p-6">
+          <div className="bg-card border border-border rounded-md p-6">
             <div className="flex items-center gap-3 mb-4">
               <Settings className="h-6 w-6 text-primary" />
               <h2 className="text-2xl font-bold">٢. استخدام المعلومات</h2>
@@ -52,7 +52,7 @@ export default function PrivacyPolicyPage() {
           </div>
 
           {/* حماية المعلومات */}
-          <div className="bg-card border border-border rounded-xl p-6">
+          <div className="bg-card border border-border rounded-md p-6">
             <div className="flex items-center gap-3 mb-4">
               <Shield className="h-6 w-6 text-primary" />
               <h2 className="text-2xl font-bold">٣. حماية المعلومات</h2>
@@ -70,7 +70,7 @@ export default function PrivacyPolicyPage() {
           </div>
 
           {/* حقوق المستخدمين */}
-          <div className="bg-card border border-border rounded-xl p-6">
+          <div className="bg-card border border-border rounded-md p-6">
             <div className="flex items-center gap-3 mb-4">
               <UserCheck className="h-6 w-6 text-primary" />
               <h2 className="text-2xl font-bold">٤. حقوق المستخدمين</h2>
@@ -88,7 +88,7 @@ export default function PrivacyPolicyPage() {
           </div>
 
           {/* الاتصال بنا */}
-          <div className="bg-card border border-border rounded-xl p-6">
+          <div className="bg-card border border-border rounded-md p-6">
             <div className="flex items-center gap-3 mb-4">
               <Mail className="h-6 w-6 text-primary" />
               <h2 className="text-2xl font-bold">٥. الاتصال بنا</h2>

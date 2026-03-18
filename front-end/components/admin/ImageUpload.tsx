@@ -71,7 +71,7 @@ export default function ImageUpload() {
   };
 
   return (
-    <div className="w-full max-w-2xl mx-auto p-6 bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 shadow-sm">
+    <div className="w-full max-w-2xl mx-auto p-6 bg-white dark:bg-gray-900 rounded-md border border-gray-200 dark:border-gray-800 shadow-sm">
       <h2 className="text-xl font-bold mb-6 flex items-center gap-2">
         <Upload className="w-5 h-5" />
         رفع الصور (Backend)
@@ -101,7 +101,7 @@ export default function ImageUpload() {
         </div>
 
         {/* Upload Area */}
-        <div className="border-2 border-dashed border-gray-300 dark:border-gray-700 rounded-xl p-8 text-center hover:border-primary/50 transition-colors">
+        <div className="border-2 border-dashed border-gray-300 dark:border-gray-700 rounded-md p-8 text-center hover:border-primary/50 transition-colors">
           <input
             type="file"
             multiple

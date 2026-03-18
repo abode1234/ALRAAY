@@ -23,7 +23,7 @@ export default function CategoriesPage() {
         {loading ? (
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {[...Array(8)].map((_, i) => (
-              <div key={i} className="p-8 bg-card rounded-xl border border-border animate-pulse text-center">
+              <div key={i} className="p-8 bg-card rounded-md border border-border animate-pulse text-center">
                 <div className="w-20 h-20 bg-gray-300 dark:bg-gray-700 rounded-lg mx-auto mb-4"></div>
                 <div className="h-5 bg-gray-300 dark:bg-gray-700 rounded w-2/3 mx-auto"></div>
               </div>
@@ -35,7 +35,7 @@ export default function CategoriesPage() {
               <Link
                 key={category.id}
                 href={category.link ? `${category.link}${category.link.includes('?') ? '&' : '?'}isolated=true` : `/products?category=${category.slug}&isolated=true`}
-                className="group p-8 bg-card rounded-xl border border-border hover:border-primary transition-all hover:shadow-lg text-center"
+                className="group p-8 bg-card rounded-md border border-border hover:border-primary transition-all hover:shadow-sm text-center"
               >
                 <div className="w-20 h-20 mx-auto mb-4 flex items-center justify-center">
                   {category.icon.startsWith('http') || category.icon.startsWith('/') ? (
