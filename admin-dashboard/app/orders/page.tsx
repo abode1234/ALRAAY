@@ -1,0 +1,383 @@
+'use client';
+
+import { useEffect, useState } from 'react';
+import {
+    ShoppingCart,
+    Phone,
+    MapPin,
+    Clock,
+    CheckCircle,
+    XCircle,
+    Package,
+    AlertCircle,
+    MessageCircle,
+    Eye,
+    X,
+} from 'lucide-react';
+import Sidebar from '@/components/Sidebar';
+import Header from '@/components/Header';
+import { adminApi } from '@/lib/api';
+
+interface BuildOrder {
+    id: string;
+    orderNumber: string;
+    customerPhone: string;
+    customerName?: string;
+    customerAddress: string;
+    notes?: string;
+    totalAmount: string;
+    status: string;
+    components: any;
+    createdAt: string;
+}
+
+const statusOptions = [
+    { value: '', label: 'جميع الحالات' },
+    { value: 'NEW', label: 'جديد' },
+    { value: 'PROCESSING', label: 'قيد المعالجة' },
+    { value: 'CONFIRMED', label: 'مؤكد' },
+    { value: 'SHIPPED', label: 'تم الشحن' },
+    { value: 'DELIVERED', label: 'تم التوصيل' },
+    { value: 'CANCELLED', label: 'ملغي' },
+];
+
+export default function OrdersPage() {
+    const [orders, setOrders] = useState<BuildOrder[]>([]);
+    const [loading, setLoading] = useState(true);
+    const [selectedOrder, setSelectedOrder] = useState<BuildOrder | null>(null);
+    const [filterStatus, setFilterStatus] = useState('');
+    const [updating, setUpdating] = useState(false);
+
+    const fetchOrders = async () => {
+        try {
+            const data = await adminApi.getBuildOrders(filterStatus || undefined);
+            setOrders(data);
+        } catch (error) {
+            console.error('Error fetching orders:', error);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    useEffect(() => {
+        fetchOrders();
+    }, [filterStatus]);
+
+    const updateStatus = async (orderId: string, newStatus: string) => {
+        setUpdating(true);
+        try {
+            await adminApi.updateBuildOrderStatus(orderId, newStatus);
+            await fetchOrders();
+            if (selectedOrder && selectedOrder.id === orderId) {
+                setSelectedOrder({ ...selectedOrder, status: newStatus });
+            }
+        } catch (error) {
+            console.error('Error updating status:', error);
+        } finally {
+            setUpdating(false);
+        }
+    };
+
+    const getStatusBadge = (status: string) => {
+        const statusMap: Record<string, { label: string; color: string; icon: any }> = {
+            NEW: { label: 'جديد', color: 'bg-blue-100 text-blue-700 border-blue-200', icon: AlertCircle },
+            PROCESSING: { label: 'قيد المعالجة', color: 'bg-yellow-100 text-yellow-700 border-yellow-200', icon: Clock },
+            CONFIRMED: { label: 'مؤكد', color: 'bg-green-100 text-green-700 border-green-200', icon: CheckCircle },
+            SHIPPED: { label: 'تم الشحن', color: 'bg-teal-100 text-teal-700 border-teal-200', icon: Package },
+            DELIVERED: { label: 'تم التوصيل', color: 'bg-green-100 text-green-700 border-green-200', icon: CheckCircle },
+            CANCELLED: { label: 'ملغي', color: 'bg-red-100 text-red-700 border-red-200', icon: XCircle },
+        };
+
+        const { label, color, icon: Icon } = statusMap[status] || statusMap.NEW;
+        return (
+            <span className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium border ${color}`}>
+                <Icon className="h-4 w-4" />
+                {label}
+            </span>
+        );
+    };
+
+    const formatDate = (dateString: string) => {
+        return new Date(dateString).toLocaleString('ar-IQ', {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit',
+        });
+    };
+
+    const openWhatsApp = (phone: string, orderNumber: string) => {
+        // Sanitize phone number
+        let safePhone = phone.replace(/[^0-9]/g, '');
+
+        // Remove leading zero if present
+        if (safePhone.startsWith('0')) {
+            safePhone = safePhone.substring(1);
+        }
+
+        // Add 964 if not present
+        if (!safePhone.startsWith('964')) {
+            safePhone = '964' + safePhone;
+        }
+
+        const message = `مرحباً، بخصوص طلبك رقم ${orderNumber}`;
+        window.open(`https://wa.me/${safePhone}?text=${encodeURIComponent(message)}`, '_blank');
+    };
+
+
+
+    if (loading) {
+        return (
+            <div className="flex min-h-screen bg-gray-100">
+                <Sidebar />
+                <main className="flex-1 mr-64">
+                    <Header title="طلبات التجميعة" />
+                    <div className="p-6 flex items-center justify-center h-96">
+                        <div className="w-10 h-10 border-4 border-emerald-600 border-t-transparent rounded-full animate-spin" />
+                    </div>
+                </main>
+            </div>
+        );
+    }
+
+    return (
+        <div className="flex min-h-screen bg-gray-100" dir="rtl">
+            <Sidebar />
+            <main className="flex-1 mr-64">
+                <Header title="طلبات التجميعة" />
+
+                <div className="p-6">
+                    {/* Filter */}
+                    <div className="bg-white rounded-xl p-4 mb-6 shadow-sm">
+                        <div className="flex items-center gap-4">
+                            <label className="font-medium text-gray-700">فلترة حسب الحالة:</label>
+                            <select
+                                value={filterStatus}
+                                onChange={(e) => setFilterStatus(e.target.value)}
+                                className="h-10 px-4 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-emerald-600"
+                            >
+                                {statusOptions.map((option) => (
+                                    <option key={option.value} value={option.value}>
+                                        {option.label}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+                    </div>
+
+                    {/* Orders List */}
+                    {orders.length === 0 ? (
+                        <div className="bg-white rounded-xl p-12 text-center shadow-sm">
+                            <ShoppingCart className="h-16 w-16 mx-auto mb-4 text-gray-300" />
+                            <p className="text-xl text-gray-500">لا توجد طلبات</p>
+                        </div>
+                    ) : (
+                        <div className="space-y-4">
+                            {orders.map((order) => (
+                                <div
+                                    key={order.id}
+                                    className={`bg-white rounded-xl shadow-sm overflow-hidden ${order.status === 'NEW' ? 'ring-2 ring-emerald-600' : ''
+                                        }`}
+                                >
+                                    {/* Order Header */}
+                                    <div className="p-4 border-b border-gray-100 flex items-center justify-between">
+                                        <div className="flex items-center gap-4">
+                                            <div className={`w-12 h-12 rounded-full flex items-center justify-center ${order.status === 'NEW' ? 'bg-emerald-100' : 'bg-gray-100'
+                                                }`}>
+                                                <ShoppingCart className={`h-6 w-6 ${order.status === 'NEW' ? 'text-emerald-600' : 'text-gray-500'
+                                                    }`} />
+                                            </div>
+                                            <div>
+                                                <p className="font-bold text-lg text-gray-800">{order.orderNumber}</p>
+                                                <p className="text-sm text-gray-500">{formatDate(order.createdAt)}</p>
+                                            </div>
+                                        </div>
+                                        <div className="flex items-center gap-4">
+                                            {getStatusBadge(order.status)}
+                                            <button
+                                                onClick={() => setSelectedOrder(order)}
+                                                className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+                                                title="عرض التفاصيل"
+                                            >
+                                                <Eye className="h-5 w-5 text-gray-600" />
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    {/* Order Body */}
+                                    <div className="p-4 grid grid-cols-1 md:grid-cols-3 gap-4">
+                                        {/* Customer Info */}
+                                        <div className="space-y-2">
+                                            <div className="flex items-center gap-2 text-gray-600">
+                                                <Phone className="h-4 w-4" />
+                                                <span className="font-medium">{order.customerPhone}</span>
+                                            </div>
+                                            {order.customerName && (
+                                                <p className="text-gray-600">{order.customerName}</p>
+                                            )}
+                                            <div className="flex items-start gap-2 text-gray-600">
+                                                <MapPin className="h-4 w-4 mt-0.5 flex-shrink-0" />
+                                                <span className="text-sm">{order.customerAddress}</span>
+                                            </div>
+                                        </div>
+
+                                        {/* Total */}
+                                        <div className="text-center">
+                                            <p className="text-sm text-gray-500 mb-1">المبلغ الإجمالي</p>
+                                            <p className="text-2xl font-bold text-emerald-600">
+                                                {Number(order.totalAmount).toLocaleString('ar-IQ')} د.ع
+                                            </p>
+                                        </div>
+
+
+                                        {/* Actions */}
+                                        <div className="flex items-center justify-end gap-2">
+                                            <button
+                                                onClick={() => openWhatsApp(order.customerPhone, order.orderNumber)}
+                                                className="flex items-center gap-2 px-4 py-2 bg-green-500 hover:bg-green-600 text-white rounded-lg transition-colors"
+                                            >
+                                                <MessageCircle className="h-4 w-4" />
+                                                واتساب
+                                            </button>
+
+
+                                            {order.status === 'NEW' && (
+                                                <>
+                                                    <button
+                                                        onClick={() => updateStatus(order.id, 'CONFIRMED')}
+                                                        disabled={updating}
+                                                        className="flex items-center gap-2 px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg transition-colors disabled:opacity-50"
+                                                    >
+                                                        <CheckCircle className="h-4 w-4" />
+                                                        قبول
+                                                    </button>
+                                                    <button
+                                                        onClick={() => updateStatus(order.id, 'CANCELLED')}
+                                                        disabled={updating}
+                                                        className="flex items-center gap-2 px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded-lg transition-colors disabled:opacity-50"
+                                                    >
+                                                        <XCircle className="h-4 w-4" />
+                                                        رفض
+                                                    </button>
+                                                </>
+                                            )}
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    )}
+                </div>
+
+                {/* Order Details Modal */}
+                {
+                    selectedOrder && (
+                        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+                            <div className="bg-white rounded-2xl w-full max-w-2xl max-h-[90vh] overflow-auto">
+                                {/* Modal Header */}
+                                <div className="p-6 border-b border-gray-200 flex items-center justify-between sticky top-0 bg-white">
+                                    <div>
+                                        <h2 className="text-xl font-bold text-gray-800">{selectedOrder.orderNumber}</h2>
+                                        <p className="text-sm text-gray-500">{formatDate(selectedOrder.createdAt)}</p>
+                                    </div>
+                                    <button
+                                        onClick={() => setSelectedOrder(null)}
+                                        className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+                                    >
+                                        <X className="h-5 w-5" />
+                                    </button>
+                                </div>
+
+                                {/* Modal Body */}
+                                <div className="p-6 space-y-6">
+                                    {/* Status */}
+                                    <div className="flex items-center justify-between">
+                                        <span className="font-medium text-gray-700">الحالة:</span>
+                                        {getStatusBadge(selectedOrder.status)}
+                                    </div>
+
+                                    {/* Customer Info */}
+                                    <div className="bg-gray-50 rounded-xl p-4 space-y-3">
+                                        <h3 className="font-bold text-gray-800 mb-3">معلومات الزبون</h3>
+                                        <div className="flex items-center gap-3">
+                                            <Phone className="h-5 w-5 text-gray-400" />
+                                            <span className="font-medium">{selectedOrder.customerPhone}</span>
+                                        </div>
+                                        {selectedOrder.customerName && (
+                                            <div className="flex items-center gap-3">
+                                                <span className="text-gray-600">{selectedOrder.customerName}</span>
+                                            </div>
+                                        )}
+                                        <div className="flex items-start gap-3">
+                                            <MapPin className="h-5 w-5 text-gray-400 mt-0.5" />
+                                            <span>{selectedOrder.customerAddress}</span>
+                                        </div>
+                                        {selectedOrder.notes && (
+                                            <div className="pt-3 border-t border-gray-200">
+                                                <p className="text-sm text-gray-500 mb-1">ملاحظات:</p>
+                                                <p>{selectedOrder.notes}</p>
+                                            </div>
+                                        )}
+                                    </div>
+
+                                    {/* Components */}
+                                    <div className="bg-gray-50 rounded-xl p-4">
+                                        <h3 className="font-bold text-gray-800 mb-3">تفاصيل التجميعة</h3>
+                                        {selectedOrder.components && typeof selectedOrder.components === 'object' ? (
+                                            <div className="space-y-2">
+                                                {Object.entries(selectedOrder.components).map(([category, product]: [string, any]) => (
+                                                    <div key={category} className="flex justify-between items-center py-2 border-b border-gray-200 last:border-0">
+                                                        <span className="text-gray-600">{category}</span>
+                                                        <span className="font-medium">
+                                                            {typeof product === 'object' ? product.name : product}
+                                                        </span>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        ) : (
+                                            <p className="text-gray-500">لا توجد تفاصيل</p>
+                                        )}
+                                    </div>
+
+                                    <div className="bg-emerald-50 rounded-xl p-4 flex justify-between items-center">
+                                        <span className="font-bold text-gray-800">المبلغ الإجمالي</span>
+                                        <span className="text-2xl font-bold text-emerald-600">
+                                            {Number(selectedOrder.totalAmount).toLocaleString('ar-IQ')} د.ع
+                                        </span>
+                                    </div>
+
+                                    {/* Actions */}
+                                    <div className="flex gap-3">
+                                        <button
+                                            onClick={() => openWhatsApp(selectedOrder.customerPhone, selectedOrder.orderNumber)}
+                                            className="flex-1 flex items-center justify-center gap-2 py-3 bg-green-500 hover:bg-green-600 text-white rounded-lg transition-colors"
+                                        >
+                                            <MessageCircle className="h-5 w-5" />
+                                            تواصل واتساب
+                                        </button>
+
+
+                                        {selectedOrder.status !== 'CANCELLED' && selectedOrder.status !== 'DELIVERED' && (
+                                            <select
+                                                value={selectedOrder.status}
+                                                onChange={(e) => updateStatus(selectedOrder.id, e.target.value)}
+                                                className="flex-1 py-3 px-4 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-emerald-600"
+                                            >
+                                                {statusOptions.slice(1).map((option) => (
+                                                    <option key={option.value} value={option.value}>
+                                                        {option.label}
+                                                    </option>
+                                                ))}
+                                            </select>
+                                        )}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    )
+                }
+            </main >
+        </div >
+    );
+}

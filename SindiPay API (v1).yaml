@@ -1,0 +1,254 @@
+openapi: 3.0.3
+info:
+  title: SindiPay API
+  version: 1.0.0 (v1)
+  description: API documentation for SindiPay payment processing system
+paths:
+  /api/v1/payments/gateway/:
+    post:
+      operationId: payments_gateway_create
+      description: Create a new Gateway payment. The merchant field will be auto-assigned
+        based on API key authentication. Requires X-API-Key header with valid merchant
+        API key.
+      summary: Create Gateway payment
+      tags:
+      - Gateway Payments
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GatewayPaymentCreateRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/GatewayPaymentCreateRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/GatewayPaymentCreateRequest'
+        required: true
+      security:
+      - MerchantAPIKey: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GatewayPaymentRead'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthenticationErrorResponse'
+          description: Authentication failed
+  /api/v1/payments/gateway/{id}/:
+    get:
+      operationId: payments_gateway_retrieve
+      description: Retrieve a Gateway payment for the authenticated merchant. Requires
+        X-API-Key header with valid merchant API key.
+      summary: Retrieve Gateway payment
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Gateway Payment.
+        required: true
+      tags:
+      - Gateway Payments
+      security:
+      - MerchantAPIKey: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GatewayPaymentRead'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthenticationErrorResponse'
+          description: Authentication failed
+components:
+  schemas:
+    AuthenticationErrorResponse:
+      type: object
+      description: Authentication error response format for 401 responses
+      properties:
+        detail:
+          type: string
+          readOnly: true
+          description: Authentication error message
+      required:
+      - detail
+    CurrencyEnum:
+      enum:
+      - IQD
+      type: string
+      description: '* `IQD` - Iraqi Dinar'
+    GatewayPaymentCreateRequest:
+      type: object
+      properties:
+        title:
+          type: string
+          minLength: 1
+          description: Brief description of what this payment is for
+          maxLength: 100
+        order_id:
+          type: string
+          minLength: 1
+          description: A unique string to reference the order. This can be a customer
+            ID, a cart ID, or similar, and can be used to reconcile the session with
+            your internal systems.
+          maxLength: 255
+        total_amount:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,9}(?:\.\d{0,2})?$
+          description: The total amount of the order in the currency specified in
+            the request.
+        currency:
+          allOf:
+          - $ref: '#/components/schemas/CurrencyEnum'
+          default: IQD
+          description: |-
+            The currency of the order in ISO 4217 format. Defaults to IQD.
+
+            * `IQD` - Iraqi Dinar
+        locale:
+          allOf:
+          - $ref: '#/components/schemas/LocaleEnum'
+          default: ar
+          description: |-
+            The locale of the order in ISO 639-1 format. Defaults to ar.
+
+            * `en` - English
+            * `ar` - Arabic
+        callback_url:
+          type: string
+          format: uri
+          minLength: 1
+          description: The URL to redirect to after the payment is complete.
+          maxLength: 2000
+        webhook_url:
+          type: string
+          format: uri
+          minLength: 1
+          description: The URL to send webhooks to after the payment is complete.
+          maxLength: 2000
+        meta_data:
+          type: object
+          additionalProperties: {}
+          description: Custom metadata that merchants can send and receive back in
+            redirects (JSON format).
+      required:
+      - callback_url
+      - order_id
+      - title
+      - total_amount
+    GatewayPaymentRead:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The ID of the payment. Use this id to retrieve the payment
+            later.
+        title:
+          type: string
+          description: Brief description of what this payment is for
+          maxLength: 100
+        order_id:
+          type: string
+          description: A unique string to reference the order. This can be a customer
+            ID, a cart ID, or similar, and can be used to reconcile the session with
+            your internal systems.
+          maxLength: 255
+        total_amount:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,9}(?:\.\d{0,2})?$
+          description: The total amount of the order in the currency specified in
+            the request.
+        currency:
+          allOf:
+          - $ref: '#/components/schemas/CurrencyEnum'
+          description: |-
+            The currency of the order in ISO 4217 format.
+
+            * `IQD` - Iraqi Dinar
+        url:
+          type: string
+          format: uri
+          description: The full URL that will be used to redirect the customer to
+            pay.
+        locale:
+          allOf:
+          - $ref: '#/components/schemas/LocaleEnum'
+          description: |-
+            The locale of the order in ISO 639-1 format.
+
+            * `en` - English
+            * `ar` - Arabic
+        callback_url:
+          type: string
+          format: uri
+          description: The URL to redirect to after the payment is complete.
+          maxLength: 2000
+        webhook_url:
+          type: string
+          format: uri
+          description: The URL to send webhooks to after the payment is complete.
+          maxLength: 2000
+        meta_data:
+          description: Custom metadata that merchants can send and receive back in
+            redirects (JSON format).
+        status:
+          allOf:
+          - $ref: '#/components/schemas/StatusEnum'
+          description: |-
+            The status of the payment.
+
+            * `CREATED` - Created
+            * `PAID` - Paid
+            * `FAILED` - Failed
+            * `EXPIRED` - Expired
+            * `CANCELLED` - Cancelled
+      required:
+      - callback_url
+      - currency
+      - id
+      - locale
+      - order_id
+      - status
+      - title
+      - total_amount
+      - url
+    LocaleEnum:
+      enum:
+      - en
+      - ar
+      type: string
+      description: |-
+        * `en` - English
+        * `ar` - Arabic
+    StatusEnum:
+      enum:
+      - CREATED
+      - PAID
+      - FAILED
+      - EXPIRED
+      - CANCELLED
+      type: string
+      description: |-
+        * `CREATED` - Created
+        * `PAID` - Paid
+        * `FAILED` - Failed
+        * `EXPIRED` - Expired
+        * `CANCELLED` - Cancelled
+  securitySchemes:
+    MerchantAPIKey:
+      type: apiKey
+      in: header
+      name: X-API-Key
+      description: 'Merchant API key for authentication. Format: sp_xxxxxxxxxx'

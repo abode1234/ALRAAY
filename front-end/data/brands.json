@@ -1,0 +1,63 @@
+[
+  {
+    "id": "1",
+    "name": "MSI",
+    "logo": "/api/placeholder/150/150"
+  },
+  {
+    "id": "2",
+    "name": "ASUS",
+    "logo": "/api/placeholder/150/150"
+  },
+  {
+    "id": "3",
+    "name": "Gigabyte",
+    "logo": "/api/placeholder/150/150"
+  },
+  {
+    "id": "4",
+    "name": "AMD",
+    "logo": "/api/placeholder/150/150"
+  },
+  {
+    "id": "5",
+    "name": "Intel",
+    "logo": "/api/placeholder/150/150"
+  },
+  {
+    "id": "6",
+    "name": "NZXT",
+    "logo": "/api/placeholder/150/150"
+  },
+  {
+    "id": "7",
+    "name": "Corsair",
+    "logo": "/api/placeholder/150/150"
+  },
+  {
+    "id": "8",
+    "name": "NVIDIA",
+    "logo": "/api/placeholder/150/150"
+  },
+  {
+    "id": "9",
+    "name": "Samsung",
+    "logo": "/api/placeholder/150/150"
+  },
+  {
+    "id": "10",
+    "name": "Seagate",
+    "logo": "/api/placeholder/150/150"
+  },
+  {
+    "id": "11",
+    "name": "G.Skill",
+    "logo": "/api/placeholder/150/150"
+  },
+  {
+    "id": "12",
+    "name": "Logitech",
+    "logo": "/api/placeholder/150/150"
+  }
+]
+

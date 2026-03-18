@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="g1" x1="0%" y1="50%" x2="100%" y2="50%" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#29bb9c"/>
+      <stop offset="1" stop-color="#0b3f32"/>
+    </linearGradient>
+    <linearGradient id="g2" x1="0%" y1="50%" x2="100%" y2="50%" xlink:href="#g1"/>
+  </defs>
+  <polygon points="104.5 20 46.5 105 46.2 55.9 18 56.1 18 133.4 60.3 133.1 140.1 19.8 104.5 20" fill="url(#g1)"/>
+  <polygon points="105.7 133.1 73.4 133.4 149.8 20 185.5 19.8 105.7 133.1" fill="url(#g2)"/>
+</svg>
