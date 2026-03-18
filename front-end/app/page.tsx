@@ -65,9 +65,9 @@ export default function HomePage() {
       {/* Promotional Banners */}
       <section className="py-6 md:py-12 bg-background">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-6 lg:h-[450px]">
-            {/* Large Banner Slider - Right Side */}
-            <div className="lg:col-span-2 lg:order-2 h-[250px] sm:h-[350px] lg:h-full">
+          <div className="flex flex-col gap-4 md:gap-6">
+            {/* Large Banner Slider - Top */}
+            <div className="w-full h-[250px] sm:h-[350px] lg:h-[450px]">
               {bannersLoading ? (
                 <div className="relative w-full h-full rounded-xl overflow-hidden bg-gray-800 animate-pulse">
                   <div className="bg-gray-700 h-full"></div>
@@ -77,26 +77,30 @@ export default function HomePage() {
               )}
             </div>
 
-            {/* Two Small Banners - Left Side Stacked */}
-            <div className="lg:col-span-1 lg:order-1 flex flex-col gap-4 md:gap-6 h-[300px] sm:h-[350px] lg:h-full">
-              {/* Top Small Banner Slider */}
-              {banners.filter(b => b.position === 'SECONDARY_TOP').length > 0 && (
-                <div className="flex-1">
+            {/* Two Small Banners - Bottom (Side by Side on desktop) */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 h-[200px] sm:h-[250px] lg:h-[300px]">
+              {/* Top Small Banner Slider -> Right (since RTL) */}
+              {banners.filter(b => b.position === 'SECONDARY_TOP').length > 0 ? (
+                <div className="w-full h-full">
                   <BannerSlider
                     banners={banners.filter(b => b.position === 'SECONDARY_TOP')}
                     autoPlayInterval={4000}
                   />
                 </div>
+              ) : (
+                <div className="hidden"></div>
               )}
 
-              {/* Bottom Small Banner Slider */}
-              {banners.filter(b => b.position === 'SECONDARY_BOTTOM').length > 0 && (
-                <div className="flex-1">
+              {/* Bottom Small Banner Slider -> Left (since RTL) */}
+              {banners.filter(b => b.position === 'SECONDARY_BOTTOM').length > 0 ? (
+                <div className="w-full h-full">
                   <BannerSlider
                     banners={banners.filter(b => b.position === 'SECONDARY_BOTTOM')}
                     autoPlayInterval={5000}
                   />
                 </div>
+              ) : (
+                <div className="hidden"></div>
               )}
             </div>
           </div>
