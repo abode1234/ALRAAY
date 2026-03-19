@@ -78,7 +78,7 @@ export default function HomePage() {
             </div>
 
             {/* Two Small Banners - Bottom (Side by Side on desktop) */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 h-[200px] sm:h-[250px] lg:h-[300px]">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 [&>div]:h-[180px] sm:[&>div]:h-[200px] md:h-[300px] md:[&>div]:h-full">
               {/* Top Small Banner Slider -> Right (since RTL) */}
               {banners.filter(b => b.position === 'SECONDARY_TOP').length > 0 ? (
                 <div className="w-full h-full">
