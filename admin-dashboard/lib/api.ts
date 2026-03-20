@@ -138,6 +138,7 @@ class AdminApi {
         if (params?.page) query.set('page', params.page.toString());
         if (params?.limit) query.set('limit', params.limit.toString());
         if (params?.category) query.set('category', params.category);
+        query.set('includeOutOfStock', 'true');
         return this.fetch<{ data: any[]; total: number }>(`/products?${query}`);
     }
 

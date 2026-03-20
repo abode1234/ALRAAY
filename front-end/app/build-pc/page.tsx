@@ -803,8 +803,8 @@ export default function BuildPCPage() {
               {/* Promotional Image below the summary */}
               <div className="hidden lg:block rounded-md overflow-hidden border border-border relative group shadow-sm">
                 <img 
-                  src="/gaming-pc-setup-rgb.jpg" 
-                  alt="Gaming PC Setup" 
+                  src="/tuf-gaming-pc.jpg" 
+                  alt="TUF Gaming PC Setup" 
                   className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-6">
