@@ -327,10 +327,12 @@ export default function OrdersPage() {
                                         {selectedOrder.components && typeof selectedOrder.components === 'object' ? (
                                             <div className="space-y-2">
                                                 {Object.entries(selectedOrder.components).map(([category, product]: [string, any]) => (
-                                                    <div key={category} className="flex justify-between items-center py-2 border-b border-gray-200 last:border-0">
+                                                    <div key={category} className="flex justify-between items-start py-2 border-b border-gray-200 last:border-0">
                                                         <span className="text-gray-600">{category}</span>
-                                                        <span className="font-medium">
-                                                            {typeof product === 'object' ? product.name : product}
+                                                        <span className="font-medium text-right">
+                                                            {Array.isArray(product)
+                                                                ? product.map((p: any) => p?.name || p).join('، ')
+                                                                : typeof product === 'object' ? product?.name : product}
                                                         </span>
                                                     </div>
                                                 ))}
