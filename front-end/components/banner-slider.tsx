@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
 import type { Banner } from '@/lib/api';
 
 interface BannerSliderProps {
@@ -72,34 +71,6 @@ export default function BannerSlider({ banners, autoPlayInterval = 3000 }: Banne
           </div>
         </div>
       </BannerWrapper>
-
-      {/* Navigation Arrows - Always Visible */}
-      {banners.length > 1 && (
-        <>
-          <button
-            onClick={(e) => {
-              e.preventDefault();
-              prevSlide();
-              setIsAutoPlaying(false);
-            }}
-            className="absolute top-1/2 right-4 -translate-y-1/2 bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white p-3 rounded-full transition-all shadow-lg hover:scale-110"
-            aria-label="الشريحة السابقة"
-          >
-            <ChevronRight className="h-5 w-5 sm:h-6 sm:w-6" />
-          </button>
-          <button
-            onClick={(e) => {
-              e.preventDefault();
-              nextSlide();
-              setIsAutoPlaying(false);
-            }}
-            className="absolute top-1/2 left-4 -translate-y-1/2 bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white p-3 rounded-full transition-all shadow-lg hover:scale-110"
-            aria-label="الشريحة التالية"
-          >
-            <ChevronLeft className="h-5 w-5 sm:h-6 sm:w-6" />
-          </button>
-        </>
-      )}
 
       {/* Dots Indicator */}
       {banners.length > 1 && (

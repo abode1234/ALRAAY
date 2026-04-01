@@ -3,6 +3,8 @@
 import { useState, useEffect } from 'react';
 import { adminApi } from '@/lib/api';
 import { Plus, Pencil, Trash2, Search, Ticket, X, Link2, AlertCircle } from 'lucide-react';
+import Sidebar from '@/components/Sidebar';
+import Header from '@/components/Header';
 
 interface Coupon {
     id: string;
@@ -186,16 +188,27 @@ export default function CouponsPage() {
         c.code.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
-    if (loading) {
+ if (loading) {
         return (
-            <div className="flex items-center justify-center min-h-[400px]">
-                <div className="animate-spin rounded-full h-12 w-12 border-4 border-emerald-500 border-t-transparent"></div>
+            <div className="flex min-h-screen bg-gray-100" dir="rtl">
+                <Sidebar />
+                <main className="flex-1 mr-64">
+                    <Header title="أكواد الخصم" />
+                    <div className="flex items-center justify-center min-h-[400px]">
+                        <div className="animate-spin rounded-full h-12 w-12 border-4 border-violet-500 border-t-transparent"></div>
+                    </div>
+                </main>
             </div>
         );
     }
 
     return (
-        <div className="space-y-6">
+        <div className="flex min-h-screen bg-gray-100" dir="rtl">
+            <Sidebar />
+            <main className="flex-1 mr-64">
+                <Header title="أكواد الخصم" />
+                <div className="p-6 space-y-6">
+
             {/* Header */}
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-white p-6 rounded-2xl shadow-sm border border-emerald-100">
                 <div>
