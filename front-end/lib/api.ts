@@ -1,4 +1,4 @@
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://srv1318325.hstgr.cloud/api'
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://alraay.net/api'
 
 
 export interface Section {
