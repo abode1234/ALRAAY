@@ -553,5 +553,7 @@ export default function CouponsPage() {
                 </div>
             )}
         </div>
+            </main>
+        </div>
     );
 }
