@@ -6,7 +6,7 @@ export default function ShippingPolicyPage() {
       <div className="container mx-auto px-4 max-w-3xl">
         <h1 className="text-4xl font-bold mb-4">سياسة التوصيل</h1>
         <p className="text-muted-foreground mb-8">
-          في شركة الرأي شاملة، نلتزم بتوصيل المنتجات إلى عملائنا بأسرع وقت ممكن وبأفضل جودة. تهدف سياسة التوصيل لدينا إلى ضمان تجربة شراء مريحة وسهلة.
+          في متجر الرأي، نلتزم بتوصيل المنتجات إلى عملائنا بأسرع وقت ممكن وبأفضل جودة. تهدف سياسة التوصيل لدينا إلى ضمان تجربة شراء مريحة وسهلة.
         </p>
 
         <div className="space-y-8">
@@ -108,7 +108,7 @@ export default function ShippingPolicyPage() {
             </div>
             <p className="text-muted-foreground">
               لأي استفسارات أو مشاكل متعلقة بالتوصيل، يمكنكم التواصل معنا عبر البريد الإلكتروني:{' '}
-              <a href="mailto:info@aliyan.com" className="text-primary hover:underline">info@aliyan.com</a>
+              <a href="mailto:info@alraay.com" className="text-primary hover:underline">info@alraay.com</a>
             </p>
           </div>
         </div>

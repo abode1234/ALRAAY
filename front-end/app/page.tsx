@@ -107,8 +107,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Categories Strip - Hidden on mobile (categories are in hamburger menu) */}
-      <section className="hidden md:block py-12 bg-secondary-light">
+      {/* Categories Strip */}
+      <section className="py-8 md:py-12 bg-secondary-light">
         <div className="container mx-auto px-4">
           <h2 className="text-2xl font-bold mb-8 text-center">التصنيفات</h2>
           {categoriesLoading ? (

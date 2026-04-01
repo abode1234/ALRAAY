@@ -6,7 +6,7 @@ export default function PaymentPolicyPage() {
       <div className="container mx-auto px-4 max-w-3xl">
         <h1 className="text-4xl font-bold mb-4">سياسة الدفع</h1>
         <p className="text-muted-foreground mb-8">
-          في شركة الرأي شاملة، نسعى لتوفير خيارات دفع سهلة وآمنة لضمان راحة عملائنا وثقتهم أثناء إجراء المعاملات المالية.
+          في متجر الرأي، نسعى لتوفير خيارات دفع سهلة وآمنة لضمان راحة عملائنا وثقتهم أثناء إجراء المعاملات المالية.
         </p>
 
         <div className="space-y-8">
@@ -98,7 +98,7 @@ export default function PaymentPolicyPage() {
             </div>
             <p className="text-muted-foreground">
               لأي استفسارات أو مشاكل متعلقة بالدفع، يمكنكم التواصل معنا عبر البريد الإلكتروني:{' '}
-              <a href="mailto:info@aliyan.com" className="text-primary hover:underline">info@aliyan.com</a>
+              <a href="mailto:info@alraay.com" className="text-primary hover:underline">info@alraay.com</a>
             </p>
           </div>
         </div>

@@ -28,7 +28,7 @@ export default function Footer() {
               )}
             </Link>
             <p className="text-muted-foreground text-sm leading-relaxed mb-5">
-              شركة الرأي الشاملة - شركة عراقية متخصصة في بيع وتوزيع منتجات الحاسبات وتقنيات المعلومات منذ أكثر من ثلاثة عقود.
+              متجر الرأي - خبرة أكثر من عشر سنوات في تكنولوجيا الحاسوب والتجميعات والشبكات الاحترافية. نوفر أفضل قطع الهاردوير من كبرى البراندات العالمية لقطاعات الألعاب والتصميم والهندسة.
             </p>
             <div className="flex gap-2">
               <a
@@ -136,9 +136,9 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href="tel:+9647723440578" className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors text-sm">
+                <a href="tel:+9647775773444" className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors text-sm">
                   <Phone className="h-4 w-4 flex-shrink-0" />
-                  <span dir="ltr">+964 772 344 0578</span>
+                  <span dir="ltr">+964 777 577 3444</span>
                 </a>
               </li>
               <li>
@@ -158,7 +158,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-border mt-10 pt-6">
           <p className="text-muted-foreground text-xs text-center">
-            &copy; {currentYear} شركة الرأي الشاملة. جميع الحقوق محفوظة.
+            &copy; {currentYear} متجر الرأي. جميع الحقوق محفوظة.
           </p>
         </div>
       </div>

@@ -6,7 +6,7 @@ export default function PrivacyPolicyPage() {
       <div className="container mx-auto px-4 max-w-3xl">
         <h1 className="text-4xl font-bold mb-4">سياسة الخصوصية</h1>
         <p className="text-muted-foreground mb-8">
-          في شركة الرأي شاملة، نحن نلتزم بحماية خصوصية مستخدمينا. لا نقوم بجمع أي بيانات شخصية إلا عند الحاجة لتقديم الخدمة، مثل اسم المستخدم ورقم الهاتف أثناء إتمام الطلب.
+          في متجر الرأي، نحن نلتزم بحماية خصوصية مستخدمينا. لا نقوم بجمع أي بيانات شخصية إلا عند الحاجة لتقديم الخدمة، مثل اسم المستخدم ورقم الهاتف أثناء إتمام الطلب.
         </p>
 
         <div className="space-y-8">
@@ -95,7 +95,7 @@ export default function PrivacyPolicyPage() {
             </div>
             <p className="text-muted-foreground">
               لأي استفسارات أو طلبات متعلقة بسياسة الخصوصية، يمكنكم التواصل معنا عبر البريد الإلكتروني:{' '}
-              <a href="mailto:info@aliyan.com" className="text-primary hover:underline">info@aliyan.com</a>
+              <a href="mailto:info@alraay.com" className="text-primary hover:underline">info@alraay.com</a>
             </p>
           </div>
         </div>

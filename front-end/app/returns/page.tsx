@@ -6,7 +6,7 @@ export default function ReturnsPolicyPage() {
       <div className="container mx-auto px-4 max-w-3xl">
         <h1 className="text-4xl font-bold mb-4">سياسة الاسترجاع</h1>
         <p className="text-muted-foreground mb-8">
-          في شركة الرأي شاملة، نحن نحرص على تقديم خدمة ممتازة وتجربة شراء مريحة. لذلك، نوفر سياسة استرجاع مرنة تضمن رضا العملاء وتلبية احتياجاتهم.
+          في متجر الرأي، نحن نحرص على تقديم خدمة ممتازة وتجربة شراء مريحة. لذلك، نوفر سياسة استرجاع مرنة تضمن رضا العملاء وتلبية احتياجاتهم.
         </p>
 
         <div className="space-y-8">
@@ -71,7 +71,7 @@ export default function ReturnsPolicyPage() {
               </li>
               <li className="flex items-start gap-2">
                 <span className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0" />
-                <span>في حالة الموافقة، سيتم إرشادك لإعادة المنتج إلى عنوان الشركة.</span>
+                <span>في حالة الموافقة، سيتم إرشادك لإعادة المنتج إلى عنوان المتجر.</span>
               </li>
             </ul>
           </div>
@@ -102,7 +102,7 @@ export default function ReturnsPolicyPage() {
             </div>
             <p className="text-muted-foreground">
               لأي استفسارات أو طلبات متعلقة بسياسة الاسترجاع، يمكنكم التواصل معنا عبر البريد الإلكتروني:{' '}
-              <a href="mailto:info@aliyan.com" className="text-primary hover:underline">info@aliyan.com</a>
+              <a href="mailto:info@alraay.com" className="text-primary hover:underline">info@alraay.com</a>
             </p>
           </div>
         </div>
