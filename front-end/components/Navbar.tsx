@@ -202,7 +202,7 @@ export default function Navbar() {
               </div>
               <div className="flex-1 flex justify-center text-center">
                 <span className="text-primary font-bold text-sm tracking-wide">
-                  أهلاً بكم في متجر الرأي الشامل - اكتشف أحدث العروض والتخفيضات!
+                  أهلاً بكم في متجر الرأي - اكتشف أحدث العروض والتخفيضات!
                 </span>
               </div>
               <div className="flex-1 flex items-center justify-end gap-5 text-muted-foreground">

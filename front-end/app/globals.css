@@ -179,6 +179,104 @@
     animation-delay: 0.1s;
   }
 
+  /* Feature Card 3D Tracker */
+  .feature-card-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 280px;
+    transition: 200ms;
+  }
+
+  .feature-card-container:active {
+    transform: scale(0.97);
+  }
+
+  .feature-canvas {
+    perspective: 800px;
+    position: absolute;
+    inset: 0;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+  }
+
+  .feature-card {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.5rem;
+    transition: 700ms;
+    background-color: hsl(var(--background));
+    border: 1px solid hsl(var(--border));
+    padding: 2rem;
+    text-align: center;
+  }
+
+  .feature-card::before {
+    content: '';
+    background: radial-gradient(circle at center, #06c6a120, transparent 70%);
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    border-radius: 0.5rem;
+    z-index: -1;
+    transition: 300ms;
+  }
+
+  .feature-tracker {
+    position: absolute;
+    z-index: 200;
+    width: 100%;
+    height: 100%;
+  }
+
+  .feature-tracker:hover { cursor: pointer; }
+
+  .feature-tracker:hover ~ .feature-card::before { opacity: 1; }
+  .feature-tracker:hover ~ .feature-card { filter: brightness(1.08); }
+
+  .ftr-1  { grid-area: 1 / 1; } .ftr-2  { grid-area: 1 / 2; } .ftr-3  { grid-area: 1 / 3; }
+  .ftr-4  { grid-area: 1 / 4; } .ftr-5  { grid-area: 1 / 5; } .ftr-6  { grid-area: 2 / 1; }
+  .ftr-7  { grid-area: 2 / 2; } .ftr-8  { grid-area: 2 / 3; } .ftr-9  { grid-area: 2 / 4; }
+  .ftr-10 { grid-area: 2 / 5; } .ftr-11 { grid-area: 3 / 1; } .ftr-12 { grid-area: 3 / 2; }
+  .ftr-13 { grid-area: 3 / 3; } .ftr-14 { grid-area: 3 / 4; } .ftr-15 { grid-area: 3 / 5; }
+  .ftr-16 { grid-area: 4 / 1; } .ftr-17 { grid-area: 4 / 2; } .ftr-18 { grid-area: 4 / 3; }
+  .ftr-19 { grid-area: 4 / 4; } .ftr-20 { grid-area: 4 / 5; } .ftr-21 { grid-area: 5 / 1; }
+  .ftr-22 { grid-area: 5 / 2; } .ftr-23 { grid-area: 5 / 3; } .ftr-24 { grid-area: 5 / 4; }
+  .ftr-25 { grid-area: 5 / 5; }
+
+  .ftr-1:hover  ~ .feature-card { transform: rotateX(20deg) rotateY(-10deg); transition: 125ms ease-in-out; }
+  .ftr-2:hover  ~ .feature-card { transform: rotateX(20deg) rotateY(-5deg);  transition: 125ms ease-in-out; }
+  .ftr-3:hover  ~ .feature-card { transform: rotateX(20deg) rotateY(0deg);   transition: 125ms ease-in-out; }
+  .ftr-4:hover  ~ .feature-card { transform: rotateX(20deg) rotateY(5deg);   transition: 125ms ease-in-out; }
+  .ftr-5:hover  ~ .feature-card { transform: rotateX(20deg) rotateY(10deg);  transition: 125ms ease-in-out; }
+  .ftr-6:hover  ~ .feature-card { transform: rotateX(10deg) rotateY(-10deg); transition: 125ms ease-in-out; }
+  .ftr-7:hover  ~ .feature-card { transform: rotateX(10deg) rotateY(-5deg);  transition: 125ms ease-in-out; }
+  .ftr-8:hover  ~ .feature-card { transform: rotateX(10deg) rotateY(0deg);   transition: 125ms ease-in-out; }
+  .ftr-9:hover  ~ .feature-card { transform: rotateX(10deg) rotateY(5deg);   transition: 125ms ease-in-out; }
+  .ftr-10:hover ~ .feature-card { transform: rotateX(10deg) rotateY(10deg);  transition: 125ms ease-in-out; }
+  .ftr-11:hover ~ .feature-card { transform: rotateX(0deg)  rotateY(-10deg); transition: 125ms ease-in-out; }
+  .ftr-12:hover ~ .feature-card { transform: rotateX(0deg)  rotateY(-5deg);  transition: 125ms ease-in-out; }
+  .ftr-13:hover ~ .feature-card { transform: rotateX(0deg)  rotateY(0deg);   transition: 125ms ease-in-out; }
+  .ftr-14:hover ~ .feature-card { transform: rotateX(0deg)  rotateY(5deg);   transition: 125ms ease-in-out; }
+  .ftr-15:hover ~ .feature-card { transform: rotateX(0deg)  rotateY(10deg);  transition: 125ms ease-in-out; }
+  .ftr-16:hover ~ .feature-card { transform: rotateX(-10deg) rotateY(-10deg); transition: 125ms ease-in-out; }
+  .ftr-17:hover ~ .feature-card { transform: rotateX(-10deg) rotateY(-5deg);  transition: 125ms ease-in-out; }
+  .ftr-18:hover ~ .feature-card { transform: rotateX(-10deg) rotateY(0deg);   transition: 125ms ease-in-out; }
+  .ftr-19:hover ~ .feature-card { transform: rotateX(-10deg) rotateY(5deg);   transition: 125ms ease-in-out; }
+  .ftr-20:hover ~ .feature-card { transform: rotateX(-10deg) rotateY(10deg);  transition: 125ms ease-in-out; }
+  .ftr-21:hover ~ .feature-card { transform: rotateX(-20deg) rotateY(-10deg); transition: 125ms ease-in-out; }
+  .ftr-22:hover ~ .feature-card { transform: rotateX(-20deg) rotateY(-5deg);  transition: 125ms ease-in-out; }
+  .ftr-23:hover ~ .feature-card { transform: rotateX(-20deg) rotateY(0deg);   transition: 125ms ease-in-out; }
+  .ftr-24:hover ~ .feature-card { transform: rotateX(-20deg) rotateY(5deg);   transition: 125ms ease-in-out; }
+  .ftr-25:hover ~ .feature-card { transform: rotateX(-20deg) rotateY(10deg);  transition: 125ms ease-in-out; }
+
   /* Recolor purple icons to brand green (#06c6a1) */
   .icon-brand-green {
     filter: brightness(0) saturate(100%) invert(62%) sepia(85%) saturate(401%) hue-rotate(118deg) brightness(96%) contrast(92%);

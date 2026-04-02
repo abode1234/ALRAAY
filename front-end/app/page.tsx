@@ -7,6 +7,7 @@ import BannerSlider from '@/components/banner-slider';
 import CategorySlider from '@/components/category-slider';
 import { formatPrice } from '@/lib/utils';
 import { useQuickView } from '@/contexts/QuickViewContext';
+import FeatureCard from '@/components/FeatureCard';
 import { toast } from 'sonner';
 import Link from 'next/link';
 
@@ -151,17 +152,17 @@ export default function HomePage() {
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center p-8 bg-background rounded-lg border border-border">
+            <FeatureCard>
               <img src="/icons/shield.svg" alt="ضمان شامل" className="w-20 h-20 mx-auto mb-4" />
               <h3 className="text-xl font-bold mb-2">ضمان شامل</h3>
               <p className="text-gray-400">على جميع المنتجات</p>
-            </div>
-            <div className="text-center p-8 bg-background rounded-lg border border-border">
+            </FeatureCard>
+            <FeatureCard>
               <img src="/icons/delivery.svg" alt="توصيل سريع" className="w-20 h-20 mx-auto mb-4" />
               <h3 className="text-xl font-bold mb-2">توصيل سريع</h3>
               <p className="text-gray-400">لجميع المحافظات</p>
-            </div>
-            <div className="text-center p-8 bg-background rounded-lg border border-border">
+            </FeatureCard>
+            <FeatureCard>
               <img src="/icons/headset.svg" alt="تواصل معنا" className="w-20 h-20 mx-auto mb-4" />
               <h3 className="text-xl font-bold mb-2">تواصل معنا</h3>
               <p className="text-gray-400 mb-4">على مدار الساعة</p>
@@ -189,7 +190,7 @@ export default function HomePage() {
                   <span>خدمة الزبائن</span>
                 </a>
               </div>
-            </div>
+            </FeatureCard>
           </div>
         </div>
       </section>

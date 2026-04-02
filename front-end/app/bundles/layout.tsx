@@ -2,10 +2,10 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
     title: 'التجميعات الجاهزة',
-    description: 'تجميعات كمبيوتر جاهزة ومخصصة من شركة الرأي الشاملة - تجميعات ألعاب، تجميعات عمل، تجميعات تصميم بأفضل الأسعار',
+    description: 'تجميعات كمبيوتر جاهزة ومخصصة من شركة الرأي - تجميعات ألعاب، تجميعات عمل، تجميعات تصميم بأفضل الأسعار',
     openGraph: {
         title: 'التجميعات الجاهزة | alraay',
-        description: 'تجميعات كمبيوتر جاهزة ومخصصة من شركة الرأي الشاملة',
+        description: 'تجميعات كمبيوتر جاهزة ومخصصة من شركة الرأي',
         url: 'https://alraay.com/bundles',
     },
     alternates: {
