@@ -257,7 +257,7 @@ class AdminApi {
     }
 
     // Image Upload
-    async uploadImage(file: File): Promise<{
+    async uploadImage(file: File, type: 'product' | 'icon' | 'banner' = 'product'): Promise<{
         id: string;
         filename: string;
         path: string;
@@ -268,6 +268,7 @@ class AdminApi {
         const token = this.getToken();
         const formData = new FormData();
         formData.append('file', file);
+        formData.append('type', type);
 
         const response = await fetch(`${API_URL}/upload/single`, {
             method: 'POST',
@@ -293,7 +294,7 @@ class AdminApi {
         return response.json();
     }
 
-    async uploadMultipleImages(files: File[]): Promise<Array<{
+    async uploadMultipleImages(files: File[], type: 'product' | 'icon' | 'banner' = 'product'): Promise<Array<{
         id: string;
         filename: string;
         path: string;
@@ -306,6 +307,7 @@ class AdminApi {
         files.forEach((file) => {
             formData.append('files', file);
         });
+        formData.append('type', type);
 
         const response = await fetch(`${API_URL}/upload/multiple`, {
             method: 'POST',

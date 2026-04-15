@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
+import Image from 'next/image';
 import type { Banner } from '@/lib/api';
 
 interface BannerSliderProps {
@@ -51,10 +52,14 @@ export default function BannerSlider({ banners, autoPlayInterval = 3000 }: Banne
       {/* Banner Image */}
       <BannerWrapper {...bannerProps} className="block h-full">
         <div key={currentIndex} className="relative h-full animate-fadeIn group">
-          <img
+          <Image
             src={currentBanner.imageUrl}
             alt={currentBanner.title}
-            className="absolute inset-0 w-full h-full object-contain sm:object-cover transition-transform duration-300 group-hover:scale-105"
+            fill
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 100vw"
+            quality={95}
+            priority={currentIndex === 0}
+            className="object-contain sm:object-cover transition-transform duration-300 group-hover:scale-105"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
 

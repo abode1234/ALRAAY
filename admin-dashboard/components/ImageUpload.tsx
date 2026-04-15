@@ -19,6 +19,7 @@ interface ImageUploadProps {
   onChange?: (images: UploadedImage[]) => void;
   maxFiles?: number;
   className?: string;
+  imageType?: 'product' | 'icon' | 'banner';
 }
 
 export default function ImageUpload({
@@ -27,6 +28,7 @@ export default function ImageUpload({
   onChange,
   maxFiles = 10,
   className = '',
+  imageType = 'product',
 }: ImageUploadProps) {
   const [uploading, setUploading] = useState(false);
   const [dragActive, setDragActive] = useState(false);
@@ -69,9 +71,9 @@ export default function ImageUpload({
       let uploadedImages: UploadedImage[];
 
       if (multiple && fileArray.length > 1) {
-        uploadedImages = await adminApi.uploadMultipleImages(fileArray);
+        uploadedImages = await adminApi.uploadMultipleImages(fileArray, imageType);
       } else {
-        const uploaded = await adminApi.uploadImage(fileArray[0]);
+        const uploaded = await adminApi.uploadImage(fileArray[0], imageType);
         uploadedImages = [uploaded];
       }
 

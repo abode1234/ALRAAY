@@ -230,6 +230,7 @@ export default function BannersPage() {
                                         multiple={false}
                                         value={newBannerImage}
                                         onChange={setNewBannerImage}
+                                        imageType="banner"
                                     />
                                 </div>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -386,6 +387,7 @@ export default function BannersPage() {
                                             multiple={false}
                                             value={editBannerImage}
                                             onChange={setEditBannerImage}
+                                            imageType="banner"
                                         />
                                     </div>
                                     <input
