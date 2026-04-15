@@ -11,6 +11,11 @@ const nextConfig = {
         pathname: '/api/images/**',
       },
       {
+        protocol: 'https',
+        hostname: 'alraay.net',
+        pathname: '/api/images/**',
+      },
+      {
         protocol: 'http',
         hostname: 'localhost',
         pathname: '/images/**',
