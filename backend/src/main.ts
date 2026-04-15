@@ -19,8 +19,8 @@ async function bootstrap() {
       process.env.FRONTEND_URL || 'http://localhost:4000',
       'http://localhost:4001', // Admin dashboard
       'http://localhost:4003', // other if any
-      'http://srv1318325.hstgr.cloud',
-      'https://srv1318325.hstgr.cloud',
+      'http://alraay.net',
+      'https://alraay.net',
       'http://145.223.100.194',
       'https://145.223.100.194',
     ],
