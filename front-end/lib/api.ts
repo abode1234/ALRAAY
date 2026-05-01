@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://alraay.net/api'
+=======
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://alraay.net/api';
+>>>>>>> b77999a6cb0b1974c1c6dc574d2489177db7a161
 
 
 export interface Section {

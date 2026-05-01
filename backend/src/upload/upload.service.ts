@@ -17,7 +17,7 @@ export class UploadService {
 
   async uploadImage(
     file: Express.Multer.File,
-    type: 'product' | 'icon' = 'product',
+    type: 'product' | 'icon' | 'banner' = 'product',
   ): Promise<{
     id: string;
     filename: string;
@@ -55,6 +55,11 @@ export class UploadService {
         sharpInstance = sharpInstance
           .resize({ width: 120, withoutEnlargement: true })
           .webp({ quality: 90, lossless: true });
+      } else if (type === 'banner') {
+        // Banners: 4K width (3840px) for high-quality display on large screens
+        sharpInstance = sharpInstance
+          .resize({ width: 3840, withoutEnlargement: true })
+          .webp({ quality: 95 });
       } else {
         // Products (default): 800px width
         sharpInstance = sharpInstance
@@ -111,7 +116,7 @@ export class UploadService {
 
   async uploadMultipleImages(
     files: Express.Multer.File[],
-    type: 'product' | 'icon' = 'product',
+    type: 'product' | 'icon' | 'banner' = 'product',
   ): Promise<
     Array<{
       id: string;

@@ -33,7 +33,7 @@ export class UploadController {
   )
   async uploadSingle(
     @UploadedFile() file: Express.Multer.File,
-    @Body() body: { type?: 'product' | 'icon' },
+    @Body() body: { type?: 'product' | 'icon' | 'banner' },
   ) {
     return this.uploadService.uploadImage(file, body.type);
   }
@@ -51,7 +51,7 @@ export class UploadController {
   )
   async uploadMultiple(
     @UploadedFiles() files: Express.Multer.File[],
-    @Body() body: { type?: 'product' | 'icon' },
+    @Body() body: { type?: 'product' | 'icon' | 'banner' },
   ) {
     return this.uploadService.uploadMultipleImages(files, body.type);
   }

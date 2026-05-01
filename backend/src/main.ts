@@ -21,8 +21,11 @@ async function bootstrap() {
       'http://localhost:4003', // other if any
       'http://alraay.net',
       'https://alraay.net',
+<<<<<<< HEAD
       'http://www.alraay.net',
       'https://www.alraay.net',
+=======
+>>>>>>> b77999a6cb0b1974c1c6dc574d2489177db7a161
       'http://145.223.100.194',
       'https://145.223.100.194',
     ],
