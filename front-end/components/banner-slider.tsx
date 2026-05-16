@@ -55,15 +55,11 @@ export default function BannerSlider({ banners, autoPlayInterval = 3000 }: Banne
           <Image
             src={currentBanner.imageUrl}
             alt={currentBanner.title}
-<<<<<<< HEAD
-            className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-=======
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 100vw"
             quality={95}
             priority={currentIndex === 0}
             className="object-contain sm:object-cover transition-transform duration-300 group-hover:scale-105"
->>>>>>> b77999a6cb0b1974c1c6dc574d2489177db7a161
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
 
