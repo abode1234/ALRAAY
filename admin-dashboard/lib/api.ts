@@ -142,6 +142,22 @@ class AdminApi {
         return this.fetch<{ data: any[]; total: number }>(`/products?${query}`);
     }
 
+    async getAllProducts(category?: string): Promise<any[]> {
+        let all: any[] = [];
+        let page = 1;
+        let totalPages = 1;
+
+        do {
+            const res = await this.getProducts({ page, limit: 40, category: category || undefined });
+            all = [...all, ...(res.data || [])];
+            const meta = (res as any).meta || {};
+            totalPages = meta.totalPages || 1;
+            page += 1;
+        } while (page <= totalPages);
+
+        return all;
+    }
+
     async getProduct(id: string) {
         return this.fetch<any>(`/products/${id}`);
     }

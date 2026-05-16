@@ -1,7 +1,7 @@
 'use client';
 
-import { useState, useEffect, use } from 'react';
-import { useRouter } from 'next/navigation';
+import { useState, useEffect, use, useMemo } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { ArrowRight, Save, Plus, X } from 'lucide-react';
 import Sidebar from '@/components/Sidebar';
 import Header from '@/components/Header';
@@ -22,6 +22,7 @@ interface UploadedImage {
 export default function EditProductPage({ params }: { params: Promise<{ id: string }> }) {
     const { id } = use(params);
     const router = useRouter();
+    const searchParams = useSearchParams();
     const [loading, setLoading] = useState(false);
     const [fetching, setFetching] = useState(true);
     const [error, setError] = useState('');
@@ -68,6 +69,16 @@ export default function EditProductPage({ params }: { params: Promise<{ id: stri
     // Sections logic
     const [sections, setSections] = useState<any[]>([]);
     const [selectedSections, setSelectedSections] = useState<string[]>([]);
+
+    const returnUrl = useMemo(() => {
+        const params = new URLSearchParams();
+        const page = searchParams.get('page');
+        const category = searchParams.get('category');
+        if (page) params.set('page', page);
+        if (category) params.set('category', category);
+        const query = params.toString();
+        return query ? `/products?${query}` : '/products';
+    }, [searchParams]);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -181,7 +192,7 @@ export default function EditProductPage({ params }: { params: Promise<{ id: stri
                 images: imageUrls,
                 sectionIds: selectedSections, // Send updated section IDs
             });
-            router.push('/products');
+            router.push(returnUrl);
         } catch (err: any) {
             setError(err.message || 'حدث خطأ أثناء تعديل المنتج');
         } finally {
@@ -227,7 +238,7 @@ export default function EditProductPage({ params }: { params: Promise<{ id: stri
 
                 <div className="p-6">
                     <button
-                        onClick={() => router.back()}
+                        onClick={() => router.push(returnUrl)}
                         className="flex items-center gap-2 text-gray-600 hover:text-gray-800 mb-6"
                     >
                         <ArrowRight className="h-5 w-5" />
